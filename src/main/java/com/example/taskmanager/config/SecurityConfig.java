@@ -50,6 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .authenticationEntryPoint(new BearerTokenAuthenticationEntryPoint())
                         .accessDeniedHandler(new BearerTokenAccessDeniedHandler())
                 );
+        // TODO: Add a custom LogoutHandler that will use the functionality of the current logout endpoint
     }
 
     private String[] getOpenEndpointPatterns() {
