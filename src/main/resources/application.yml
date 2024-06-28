@@ -1,0 +1,91 @@
+spring:
+  main:
+    banner-mode: off
+
+  datasource:
+    url: jdbc:h2:file:./target/data/h2_data;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;
+    username: h2_user
+    password: h2_pass
+    driver-class-name: org.h2.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+
+  sql:
+    init:
+      mode: always
+
+  h2:
+    console:
+      enabled: true
+
+  activemq:
+    broker-url: tcp://localhost:61616
+    user: amq_user
+    password: amq_pass
+    packages:
+      trust-all: true
+
+  mail:
+    host: sandbox.smtp.mailtrap.io
+    port: 2525
+    username: 0c7535a70f27d8
+    password: 979d023e77bca4
+    protocol: smtp
+    properties:
+      mail:
+        transport:
+          protocol: smtp
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+  quartz:
+    job-store-type: jdbc
+    jdbc:
+      initialize-schema: never
+    properties:
+      org:
+        quartz:
+          job-store:
+            class: org.quartz.impl.jdbcjobstore.JobStoreTX
+            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+            tablePrefix: qrtz_
+          data-source:
+            myDS.driver: org.h2.Driver
+            myDS.URL: jdbc:h2:file:./target/data/h2_data;
+            myDS.user: h2_user
+            myDS.password: = h2_pass
+          scheduler:
+            instanceName: demo-scheduler
+            instanceId: AUTO
+
+constants:
+  registration-token-expiration-minutes: 15
+  login-token-expiration-period: 1800000
+  mail-sender: "taskmanager@gmail.com"
+  account-activation-url: "http://localhost:8080/api/user/activate?token=%s"
+  account-activation-queue: "account-activation-queue"
+
+file-system:
+  path: C://Users/Elias/task-manager-data
+
+jobs:
+  expired-registration-token-deletion:
+    name: "expiredRegistrationTokenDeletionJob"
+    cron-expression: "0 0 0 * * ?"
+  expired-refresh-token-deletion:
+    name: "expiredRefreshTokenDeletionJob"
+    cron-expression: "0 0 0 * * ?"
+
+jwt:
+  public:
+    key: file:C://Users/Elias/task-manager-data/keys/temp.key.pub
+  private:
+    key: file:C://Users/Elias/task-manager-data/keys/temp.key
