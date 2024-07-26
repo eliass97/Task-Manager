@@ -1,0 +1,67 @@
+<div class="modal-header">
+    <h4>Profile</h4>
+    <button type="button" class="btn-close" (click)="close()"></button>
+</div>
+
+<div class="modal-body">
+    <div class="text-center mb-3 position-relative">
+        <img alt="Profile image" class="img-thumbnail profile-pic" [src]="userImageUrl">
+        <label for="userImage" class="form-label position-absolute bottom-0">
+            <i class="fa-regular fa-pen-to-square"></i>
+        </label>
+        <input type="file" id="userImage" class="form-control d-none" name="image" accept=".jpg,.png"
+               (click)="onImageInputClick($event)" (change)="onImageInputChange($event)"
+               [disabled]="profileForm.enabled">
+    </div>
+
+    <form [formGroup]="profileForm">
+        <div class="form-group mb-3">
+            <label for="firstName" class="form-label">First Name</label>
+            <input id="firstName" type="text" class="form-control" name="firstName"
+                   [formControlName]="'firstName'">
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input id="lastName" type="text" class="form-control" name="lastName"
+                   [formControlName]="'lastName'">
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input id="email" type="text" class="form-control" name="email"
+                   [formControlName]="'email'">
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="location" class="form-label">Location</label>
+            <input id="location" type="text" class="form-control" name="location"
+                   [formControlName]="'location'">
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="phone" class="form-label">Phone Number</label>
+            <input id="phone" type="text" class="form-control" name="phone" placeholder="e.g. 555-555-5555"
+                   [formControlName]="'phone'">
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="jobTitle" class="form-label">Job Title</label>
+            <select id="jobTitle" class="form-select" name="jobTitle" [formControlName]="'jobTitle'">
+                <option *ngFor="let jobTitle of jobTitles" [value]="jobTitle">{{jobTitle.description}}</option>
+            </select>
+        </div>
+    </form>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary mx-auto" *ngIf="!profileForm.enabled"
+            (click)="onEdit()">Edit
+    </button>
+    <button type="button" class="btn btn-primary mx-auto" *ngIf="profileForm.enabled"
+            (click)="onCancel()">Cancel
+    </button>
+    <button type="button" class="btn btn-primary mx-auto" *ngIf="profileForm.enabled"
+            (click)="onSave()">Save
+    </button>
+</div>

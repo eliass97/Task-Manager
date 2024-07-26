@@ -1,0 +1,13 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{title}}</h4>
+    <button type="button" class="btn-close" (click)="close(false)"></button>
+</div>
+
+<div class="modal-body">
+    {{message}}
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="close(false)">No</button>
+    <button type="button" class="btn btn-primary" (click)="close(true)">Yes</button>
+</div>

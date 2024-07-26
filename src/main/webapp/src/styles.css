@@ -1,0 +1,37 @@
+a {
+  cursor: pointer;
+  color: #707070;
+}
+
+.navbar {
+  margin-bottom: 30px;
+}
+
+body {
+  background-color: #f2f3f8;
+}
+
+.card {
+  margin-bottom: 1.5rem;
+  box-shadow: 0 1px 15px 1px rgba(52, 40, 104, .08);
+  position: relative;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid #e5e9f2;
+  border-radius: .2rem;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.profile-pic {
+    width:100px;
+    height:100px;
+    border-radius:50%;
+}

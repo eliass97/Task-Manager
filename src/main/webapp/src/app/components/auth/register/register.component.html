@@ -1,0 +1,62 @@
+<div class="container h-100">
+    <div class="row h-100">
+        <div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
+            <div class="d-table-cell align-middle">
+
+                <div class="text-center mt-4">
+                    <h1 class="h2">Let's get started!</h1>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="m-sm-4">
+                            <form [formGroup]="registerForm" (ngSubmit)="register()">
+
+                                <div class="form-group mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input class="form-control form-control-lg" type="email" id="email" name="email"
+                                           placeholder="Enter your email" [formControlName]="'email'">
+
+                                    <span class="text-danger"
+                                          *ngIf="!registerForm.get('email')?.valid && registerForm.get('email')?.touched">
+                                        Please provide a valid email
+                                    </span>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label for="username" class="form-label">Username</label>
+                                    <input class="form-control form-control-lg" type="text" id="username"
+                                           name="username" placeholder="Enter your username"
+                                           [formControlName]="'username'">
+
+                                    <span class="text-danger"
+                                          *ngIf="!registerForm.get('username')?.valid && registerForm.get('username')?.touched">
+                                        Please provide a valid username
+                                    </span>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input class="form-control form-control-lg" type="password" id="password"
+                                           name="password" placeholder="Enter your password"
+                                           [formControlName]="'password'">
+
+                                    <span class="text-danger"
+                                          *ngIf="!registerForm.get('password')?.valid && registerForm.get('password')?.touched">
+                                        Please provide a valid password
+                                    </span>
+                                </div>
+
+                                <div class="text-center mt-3">
+                                    <button type="submit" class="btn btn-lg btn-primary">Sign up</button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
